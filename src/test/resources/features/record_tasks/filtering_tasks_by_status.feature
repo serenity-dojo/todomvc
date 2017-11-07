@@ -6,13 +6,13 @@ Feature: Filtering tasks by status
 
 
   Scenario: Viewing active items
-    Given that Jane has a todo list containing Buy some milk, Walk the dog
+    Given that Jane has a list containing Buy some milk, Walk the dog
     And she has completed the task called 'Walk the dog'
     When she filters her list to show only Active tasks
     Then her todo list should contain Buy some milk
 
   Scenario Outline: Viewing items by status
-    Given that Jane has a todo list containing <tasks>
+    Given that Jane has a list containing <tasks>
     And she has completed the task called 'Walk the dog'
     When she filters her list to show only <filter> tasks
     Then her todo list should contain <expected>
