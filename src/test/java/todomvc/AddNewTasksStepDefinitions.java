@@ -5,14 +5,11 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.thucydides.core.annotations.Steps;
-import todomvc.steps.TodoListUser;
 
 import java.util.List;
 
 public class AddNewTasksStepDefinitions {
 
-    @Steps
-    TodoListUser todoUser;
 
     @Given("^that (?:.*) has an empty todo list$")
     public void that_James_has_an_empty_todo_list() throws Exception {
