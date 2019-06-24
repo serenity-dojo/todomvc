@@ -1,6 +1,8 @@
+defaultTasks 'clean','test','aggregate'
+
 repositories {
-    jcenter()
     mavenLocal()
+    jcenter()
 }
 
 buildscript {
@@ -9,7 +11,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("net.serenity-bdd:serenity-gradle-plugin:${serenityCoreVersion}")
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.55")
     }
 }
 
@@ -17,11 +19,14 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
+apply from: "$rootDir/gradle/libraries.gradle"
+
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+<<<<<<< HEAD
     compile "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
     compile "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}"
     compile "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
@@ -29,6 +34,17 @@ dependencies {
     testCompile("junit:junit:${junitVersion}")
     compile("org.assertj:assertj-core:${assertjVersion}")
     compile "org.slf4j:slf4j-simple:${slf4jVersion}"
+=======
+    compile libs.slf4jApi,
+            libs.logback
+
+    testCompile libs.test.serenity.core,
+            libs.test.serenity.screenplay,
+            libs.test.serenity.screenplayWebdriver,
+            libs.test.serenity.cucumber,
+            libs.test.junit,
+            libs.test.assertj
+>>>>>>> 44a4570... Update Serenity version
 }
 
 test {
@@ -37,3 +53,5 @@ test {
 }
 
 gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)
